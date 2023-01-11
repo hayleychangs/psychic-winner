@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+body{
+    margin:0;
+    font-family: "NOTO Sans TC", san-serif;
+}
+:root{
+    --Light-Blue:#62AFF5;
+    --Blue-Gray:#7EA3E3;
+    --Gray:#666666;
+    --light-Gray:#DEE4F0;
+    --lighter-Gray:rgb(191,191,191);
+    --White:#FFFFFF;
+}
+.toDoList{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(var(--Blue-Gray), var(--light-Gray));
+    color: white;
+}
+.container{
+    display: flex;
+    height: 80vh;
+    border-bottom: 2px solid white;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+}
+.toDoForm{
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+}
+input{
+    width: 80%;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+.allToDoList{
+    list-style: none;
+    margin:10px 0 0 0;
+    padding: 0;
+    overflow-y: auto;
+}
+.allToDoList::-webkit-scrollbar{
+    width: 8px;
+}
+.allToDoList::-webkit-scrollbar-track{
+    background: none;
+}
+.allToDoList::-webkit-scrollbar-thumb{
+    background-color: var(---light-Gray);
+    border-radius: 10px;
+}
+.singleToDoTask{
+    margin: 10px 0;
+    padding: 10px 20px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+}
+.toDoText{
+    flex: 1;    /*split evenly*/
+}
+button{
+    border: none;
+    border-radius: 5px;
+    background-color:var(--Blue-Gray);
+    color: var(--White);
+    padding: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: var(--Light-Blue);
+    font-weight: bold;
+}  
+.btn{
+    margin:50px 0 30px 0;
+}
+  
