@@ -8,12 +8,12 @@ import TodoList from "./pages/listPage.js";
 function App() {
     return(
         <React.StrictMode>
-            <HashRouter>
+            <BrowserRouter>
                 <Routes>
                     <Route path="/" element={ <HomePage /> } />
                     <Route path="/list" element={ <TodoList /> } />
                 </Routes>
-            </HashRouter>
+            </BrowserRouter>
         </React.StrictMode>
     )
 }

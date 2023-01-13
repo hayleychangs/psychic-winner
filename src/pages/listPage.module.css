@@ -8,7 +8,7 @@ body{
     --Blue-Gray:#7EA3E3;
     --Gray:#666666;
     --light-Gray:#DEE4F0;
-    --lighter-Gray:rgb(191,191,191);
+    --lighter-Gray:rgb(195, 195, 195);
     --White:#FFFFFF;
 }
 .toDoList{
@@ -35,7 +35,7 @@ body{
     justify-content: space-around;
     width: 500px;
 }
-input{
+.inputText{
     width: 80%;
     padding: 10px;
     border: none;
@@ -58,11 +58,18 @@ input{
     border-radius: 10px;
 }
 .singleToDoTask{
-    margin: 10px 0;
+    margin: 20px 20px 0 15px;
     padding: 10px 20px;
-    width: 500px;
+    width: 450px;
+    height: 20px;
     display: flex;
     align-items: center;
+    background-color: var(--light-Gray);
+    border-radius: 5px;
+}
+.singleToDoTask:hover{
+    transform: scale(1.03);
+    background-color: var(--lighter-Gray);
 }
 .toDoText{
     flex: 1;    /*split evenly*/
@@ -80,7 +87,10 @@ button:hover{
     background-color: var(--Light-Blue);
     font-weight: bold;
 }  
-.btn{
-    margin:50px 0 30px 0;
+.backBtn{
+    margin:15px 0 30px 0;
 }
-  
+.totalText{
+    font-size: 18px;
+    letter-spacing: 1px;
+}

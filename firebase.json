@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site":"eureka-585c7",
     "public": "dist",
     "ignore": [
       "firebase.json",
