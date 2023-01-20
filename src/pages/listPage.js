@@ -7,6 +7,8 @@ import styles from "./listPage.module.css";
 import { collection, addDoc, query, getDocs, deleteDoc, doc, serverTimestamp, orderBy } from "firebase/firestore";
 import {db} from "../firebase";
 
+
+//loading page
 const Loading = () => {
     return (
       <div className="loading-screen">
@@ -33,7 +35,7 @@ const TodoList = () => {
                     timestamp: serverTimestamp(),
                 });
                 setInputToDo("");
-                console.log("Document written with ID: ", docRef.id);
+                // console.log("Document written with ID: ", docRef.id);
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
@@ -43,33 +45,43 @@ const TodoList = () => {
 
     //read todo
     const [toDoList, setToDoList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const fetchPost = async () => {
-        const todosRef = collection(db, "todos");
-        const q = query(todosRef, orderBy("timestamp", "desc"));
-        const data = await getDocs(q);
-        const newData = data.docs.map((doc) => ({...doc.data(), id:doc.id }));
-        setToDoList(newData);
-        console.log(todosRef);
-        console.log(toDoList, newData);
-    }
+        if (inputToDo !== "") {
+            setIsLoading(false);
+        }else if (isClicked) {
+            setIsLoading(false);
+        }else{
+            setIsLoading(true);
+        };
+        try {
+            const todosRef = collection(db, "todos");
+            const q = query(todosRef, orderBy("timestamp", "desc"));
+            const data = await getDocs(q);
+            const newData = data.docs.map((doc) => ({...doc.data(), id:doc.id }));
+            setToDoList(newData);
+            // console.log(todosRef);
+            // console.log(toDoList, newData);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsLoading(false);
+        };
+    };
         
     useEffect(()=>{
         fetchPost();
     }, []);
 
     //delete todo
+    const [isClicked, setIsClicked] = useState(true);
     const handleDelete = async (id) => {
+        setIsClicked(true);
         await deleteDoc(doc(db, "todos", id));
         fetchPost();
     }
-
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 1000);
-    }, []);
-
+    
+    //render component
     if (isLoading) {
         return <Loading />
     }
